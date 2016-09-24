@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>React Demo</title>
+	<script type="text/javascript" src='scripts/react-min.js'></script>
+	<script type="text/javascript" src='scripts/react-dom-min.js'></script>
+	<script type="text/javascript" src='scripts/browser.min.js'></script>
+</head>
+<body>
+<div id='container'></div>
+	<script type="text/babel">
+	var CheckBox = React.createClass({
+	getInitialState: function(){
+		return {check : true};
+	},
+	render: function(){	
+		return (
+			<div>
+				<input type="checkbox" defaultChecked={this.state.check} onChange={this.change} />
+				{this.props.children}
+				<h3>I am {this.state.check ? 'selected' : 'not selected'}</h3>
+			</div>
+		);
+	},
+	change: function(){
+		this.setState({check : !this.state.check});
+	}
+
+	});
+        ReactDOM.render(<CheckBox>click me</CheckBox>,
+            document.getElementById('container')
+        );
+    </script>
+	
+</body>
+</html>

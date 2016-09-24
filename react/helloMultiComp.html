@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>React Component</title>
+	<script type="text/javascript" src='scripts/react-min.js'></script>
+	<script type="text/javascript" src='scripts/react-dom-min.js'></script>
+	<script type="text/javascript" src='scripts/browser.min.js'></script>
+</head>
+<body>
+<div id='container'></div>
+	<script type="text/babel">
+
+	var Hello = React.createClass({
+		render: function(){
+			return (
+			<div>
+				<h2>Welcome to React Component!</h2>
+				<p>this is simple companent</p>
+			</div>);
+		}
+	});
+        ReactDOM.render(<Hello />,
+            document.getElementById('container')
+        );
+    </script>
+	
+</body>
+</html>

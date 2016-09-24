@@ -1,0 +1,37 @@
+button{
+	background: none;	
+	margin: 5px;
+	border: none;
+	color: #fff;
+	padding: 4px;
+	cursor: pointer;
+}
+
+.board
+{
+	background-color: #889AF0;
+	margin: 10px;
+	padding: 8px;
+	border: 1px solid black;
+	overflow: auto;
+}
+
+.commentContainer {
+	width: 200px;
+	padding: 8px;
+	margin: 8px;
+	border: 1px solid black;
+	background-color: #fff;
+	text-align: center;
+	float:left;
+}
+
+.button-primary{
+	background-color: blue;
+}
+.button-danger{	
+	background-color: red;
+}
+.button-green{	
+	background-color: green;
+}

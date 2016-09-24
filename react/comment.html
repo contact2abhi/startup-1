@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>React Event Demo</title>
+	<link type="text/css" rel='stylesheet' href='css/main.css'></link>
+	<script type="text/javascript" src='scripts/react-min.js'></script>
+	<script type="text/javascript" src='scripts/react-dom-min.js'></script>
+	<script type="text/javascript" src='scripts/browser.min.js'></script>
+</head>
+<body>
+<div id='container'></div>
+	<script type="text/babel">
+
+	var Comment = React.createClass({
+		getInitialState: function(){
+			return {edit: false};
+		},
+		edit: function(){
+			this.setState({edit: true});
+		},
+		delete: function(){
+			alert('delete clicked');
+		},
+		save: function()
+		{
+			var val = this.refs.newVal.value;
+			this.setState({ edit: false });
+		},
+		renderForm: function(){
+			return (
+			<div className='commentContainer'>				
+				<textarea ref='newVal' defaultValue={this.props.children}></textarea>
+				<button className='button-green' onClick={this.save}>Save</button>
+			</div>);
+		},
+		renderNormal: function(){
+			return (
+			<div className='commentContainer'>
+				<h2>{this.props.children}</h2> 
+				<button className='button-primary' onClick={this.edit}>Edit</button>
+				<button className='button-danger'onClick={this.delete}>Remove</button>
+			</div>);
+		},
+		render: function(){
+			
+			if(this.state.edit)
+			{return this.renderForm();}
+			else
+			{return this.renderNormal();}
+		}
+	});
+        ReactDOM.render(<Comment>sample comment</Comment>,
+            document.getElementById('container')
+        );
+    </script>
+	
+</body>
+</html>
