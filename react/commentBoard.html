@@ -19,7 +19,8 @@
 				'comment 1',
 				'comment 2',
 				'comment 3'
-			]
+			],
+			isAdd: false
 			};
 		},
 		removeComment: function(i){
@@ -35,10 +36,27 @@
 			data[i] = newText;
 			this.setState({ comments : data});
 		},
-		render: function(){
+		addNewComment: function(){
+			var newComment = this.refs.newComment.value;
+			var data = this.state.comments;
+			data.push(newComment);
+			this.setState({
+				comments: data,
+				isAdd: false
+			});
+		},
+		addComment: function(){			
+			this.setState({
+				comments: this.state.comments,
+				isAdd: true
+			});
+		},
+		renderNormal: function()
+		{
 			var instance = this;
 			return (
 				<div className='board'>
+				<button className='button-green' onClick={this.addComment}>Add Comment</button>
 					{
 						this.state.comments.map(function(item, i){
 							return (
@@ -49,6 +67,27 @@
 					}
 				</div>
 			);
+		},
+		renderAdd: function(){
+			var instance = this;
+			return (
+				<div className='board'>
+					<div className='commentContainer'>				
+						<textarea ref='newComment'></textarea>
+						<button className='button-green' onClick={this.addNewComment}>Save</button>
+					</div>
+				</div>
+			);
+		},
+		render: function(){
+			if(this.state.isAdd)
+			{
+				return this.renderAdd();
+			}
+			else
+			{
+				return this.renderNormal();
+			}
 		}
 	});
 	var Comment = React.createClass({
